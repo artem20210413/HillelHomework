@@ -15,13 +15,6 @@ class RGB
 
     }
 
-    public function mixColor(RGB $rgb)
-    {
-        $this->red = ($this->red + $rgb->red) / 2;
-        $this->green = ($this->green + $rgb->green) / 2;
-        $this->blue = ($this->blue + $rgb->blue) / 2;
-    }
-
     private function setColor(&$number, $newNumber): self
     {
         $number = $newNumber;
@@ -33,6 +26,13 @@ class RGB
         if (0 <= $number && $number <= 255)
             return true;
         return false;
+    }
+
+    public function mixColor(RGB $rgb)
+    {
+        $this->red = ($this->red + $rgb->red) / 2;
+        $this->green = ($this->green + $rgb->green) / 2;
+        $this->blue = ($this->blue + $rgb->blue) / 2;
     }
 
     public function getRed()

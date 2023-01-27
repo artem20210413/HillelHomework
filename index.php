@@ -28,7 +28,7 @@ class RGB
         return $this;
     }
 
-    private function isValid($number)
+    private function isValid($number): bool
     {
         if (0 <= $number && $number <= 255)
             return true;

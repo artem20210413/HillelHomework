@@ -53,14 +53,14 @@ class RGB
 }
 
 try {
-    $rgb = new RGB(255, 155, 32);
+    $rgb = new RGB(255, 200  , 0);
 
     echo $rgb->getRed() . "<br>";
     echo $rgb->getGreen() . "<br>";
     echo $rgb->getBlue() . "<br>";
 
     echo "-----mixColor()-----<br>";
-    $rgb->mixColor((new RGB(1, 1, 1)));
+    $rgb->mixColor((new RGB(255, 100, 50)));
 
     echo $rgb->getRed() . "<br>";
     echo $rgb->getGreen() . "<br>";

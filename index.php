@@ -12,7 +12,6 @@ class RGB
             throw new Exception("Color not valid");
 
         $this->setColor($this->red, $red)->setColor($this->green, $green)->setColor($this->blue, $blue);
-
     }
 
     private function setColor(&$number, $newNumber): self

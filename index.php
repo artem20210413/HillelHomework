@@ -11,13 +11,14 @@ class RGB
         if (!$this->isValid($red) || !$this->isValid($green) || !$this->isValid($blue))
             throw new Exception("Color not valid");
 
-        $this->setColor($this->red, $red)->setColor($this->green, $green)->setColor($this->blue, $blue);
+        $this->setColor($red,$green,$blue);
     }
 
-    private function setColor(&$number, $newNumber): self
+    private function setColor($red, $green, $blue)
     {
-        $number = $newNumber;
-        return $this;
+        $this->red = $red;
+        $this->green = $green;
+        $this->blue = $blue;
     }
 
     private function isValid($number): bool
@@ -29,9 +30,9 @@ class RGB
 
     public function mixColor(RGB $rgb)
     {
-        $this->red = ($this->red + $rgb->red) / 2;
-        $this->green = ($this->green + $rgb->green) / 2;
-        $this->blue = ($this->blue + $rgb->blue) / 2;
+        $this->red = ($this->red + $rgb->getRed()) / 2;
+        $this->green = ($this->green + $rgb->getGreen()) / 2;
+        $this->blue = ($this->blue + $rgb->getBlue()) / 2;
     }
 
     public function getRed()
@@ -54,16 +55,8 @@ class RGB
 try {
     $rgb = new RGB(255, 200  , 0);
 
-    echo $rgb->getRed() . "<br>";
-    echo $rgb->getGreen() . "<br>";
-    echo $rgb->getBlue() . "<br>";
+    $rgb->mixColor((new RGB(255, 100, 255)));
 
-    echo "-----mixColor()-----<br>";
-    $rgb->mixColor((new RGB(255, 100, 50)));
-
-    echo $rgb->getRed() . "<br>";
-    echo $rgb->getGreen() . "<br>";
-    echo $rgb->getBlue() . "<br>";
 } catch (Exception $e) {
     echo $e->getMessage();
 }

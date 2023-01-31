@@ -6,7 +6,7 @@ use http\Exception\InvalidArgumentException;
 
 class Currency
 {
-    private $isoCode;
+    private string $isoCode;
 
     public function __construct(string $isoCode)
     {

@@ -6,8 +6,8 @@ use http\Exception\InvalidArgumentException;
 
 class Money
 {
-    private $currency;
-    private $amount;
+    private Currency $currency;
+    private float $amount;
 
     public function __construct(Currency $currency, float $amount)
     {

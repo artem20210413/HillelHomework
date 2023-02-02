@@ -8,4 +8,4 @@ require_once "autoloader.php";
 
 $loader = new Psr4AutoloaderClass();
 $loader->register();
-$loader->addNamespace('App\\', './src');
+$loader->addNamespace('App\\', '././src');

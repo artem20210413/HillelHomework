@@ -26,7 +26,7 @@ class Currency
 
     public function equals(Currency $currency_new): bool
     {
-        return ($this->isoCode === $currency_new->isoCode) ? true : false;
+        return ($this->isoCode === $currency_new->isoCode) ?? true;
     }
 
     private function valid(string $isoCode): bool

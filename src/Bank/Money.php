@@ -20,7 +20,7 @@ class Money
         $this->currency = $currency;
     }
 
-    private function getCurrency(): Currency
+    public function getCurrency(): Currency
     {
         return $this->currency;
     }

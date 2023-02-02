@@ -1,11 +1,11 @@
 <?php
-
+declare(strict_types=1);
 
 use App\Bank\Currency;
 use App\Bank\Money;
 use http\Exception\InvalidArgumentException;
 
-require_once "ready.php";
+require_once "bootstrap.php";
 
 try {
 

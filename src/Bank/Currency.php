@@ -31,7 +31,7 @@ class Currency
 
     private function valid(string $isoCode): bool
     {
-        if (!ctype_upper($isoCode) && strlen($isoCode) !== 3)
+        if (!ctype_upper($isoCode) || strlen($isoCode) !== 3)
             throw new InvalidArgumentException('Currency name is not in ISO 4217 format.');
 
         return true;

@@ -41,6 +41,7 @@ class Money
             throw new InvalidArgumentException('Currencies do not match.');
 
         $this->setAmount($this->getAmount() + $money_new->getAmount());
+
         return $this->getAmount();
 
     }

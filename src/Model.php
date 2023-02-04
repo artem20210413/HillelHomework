@@ -24,16 +24,18 @@ abstract class Model
     {
         $tableName = static::class;
         $cols = [];
-        foreach (array_keys(get_class_vars(static::class)) as $el){
-            if($el !== 'id'){
+        foreach (array_keys(get_class_vars(static::class)) as $el) {
+            if ($el !== 'id') {
                 $cols[] = $el;
             }
         }
         $colsWithoutID = implode(',', $cols);
         $sql = "INSERT INTO $tableName ($colsWithoutID) VALUES ($this->name, $this->email)";
-
-        $this->id = random_int(2, 10); /** New increment*/
         var_dump($sql . '<br>');
+
+        /** New increment*/
+        $this->id = random_int(2, 10);
+
     }
 
     protected function update()

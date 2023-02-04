@@ -1,67 +1,22 @@
 <?php
+declare(strict_types=1);
 
-class RGB
-{
-    private $red = 0;
-    private $green = 0;
-    private $blue = 0;
 
-    public function __construct($red, $green, $blue)
-    {
-        if (!$this->isValid($red) || !$this->isValid($green) || !$this->isValid($blue))
-            throw new Exception("Color not valid");
+use Artem\HillelHomework\User;
 
-        $this->setColor($red,$green,$blue);
-    }
+require_once __DIR__ . "./vendor/autoload.php";
 
-    private function setColor($red, $green, $blue)
-    {
-        $this->red = $red;
-        $this->green = $green;
-        $this->blue = $blue;
-    }
+$user1 = User::find(1);
+$user1->name = 'Artem';
+$user1->email = 'artem@gmail.com';
+$user1->save();
+$user1->delete();
 
-    private function isValid($number): bool
-    {
-        if (0 <= $number && $number <= 255)
-            return true;
-        return false;
-    }
+$userNew = new User();
+$userNew->name = 'newArtem';
+$userNew->email = 'new.artem@gmail.com';
+$userNew->save();
+$userNew->delete();
 
-    public function mixColor(RGB $rgb)
-    {
-        $this->red = ($this->red + $rgb->getRed()) / 2;
-        $this->green = ($this->green + $rgb->getGreen()) / 2;
-        $this->blue = ($this->blue + $rgb->getBlue()) / 2;
-    }
 
-    public function getRed()
-    {
-        return $this->red;
-    }
 
-    public function getGreen()
-    {
-        return $this->green;
-    }
-
-    public function getBlue()
-    {
-        return $this->blue;
-    }
-
-}
-
-try {
-    $rgb = new RGB(255, 200  , 0);
-
-    $rgb->mixColor((new RGB(255, 100, 255)));
-
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-?>
-
-<body style="background: rgb(<?php echo $rgb->getRed() ?>,<?php echo $rgb->getGreen() ?>,<?php echo $rgb->getBlue() ?>)">
-
-</body>

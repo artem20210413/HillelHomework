@@ -1,0 +1,9 @@
+{
+    "name": "artem/hillel-homework",
+    "autoload": {
+        "psr-4": {
+            "Artem\\HillelHomework\\": "src/"
+        }
+    },
+    "require": {}
+}

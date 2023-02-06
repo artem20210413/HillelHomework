@@ -9,8 +9,10 @@ abstract class Model
 
     static public function find(int $id): static
     {
-        $tableName = static::class;
-        $cols = implode(',', array_keys(get_class_vars($tableName)));
+        $tableName = explode('\\', static::class);
+        $tableName = end($tableName);
+
+        $cols = implode(',', array_keys(get_class_vars(static::class)));
 
         $sql = "SELECT $cols FROM $tableName";
         var_dump($sql . '<br>');
@@ -22,15 +24,23 @@ abstract class Model
 
     protected function create()
     {
-        $tableName = static::class;
+        $tableName = explode('\\', static::class);
+        $tableName = end($tableName);
         $cols = [];
         foreach (array_keys(get_class_vars(static::class)) as $el) {
             if ($el !== 'id') {
                 $cols[] = $el;
             }
         }
+
+        $varArr = [];
+        foreach (array_keys(get_class_vars(static::class)) as $el){
+            $var[]= $this->{$el};
+        }
+        $var = implode(',', $var);
+
         $colsWithoutID = implode(',', $cols);
-        $sql = "INSERT INTO $tableName ($colsWithoutID) VALUES ($this->name, $this->email)";
+        $sql = "INSERT INTO $tableName ($colsWithoutID) VALUES ($var)";
         var_dump($sql . '<br>');
 
         /** New increment*/
@@ -40,8 +50,16 @@ abstract class Model
 
     protected function update()
     {
-        $tableName = static::class;
-        $sql = "UPDATE $tableName SET name=$this->name, email= $this->email WHERE id={$this->id}";
+        $tableName = explode('\\', static::class);
+        $tableName = end($tableName);
+
+        $varArr = [];
+        foreach (array_keys(get_class_vars(static::class)) as $el){
+            $value = $this->{$el};
+            $var[]= "$el=$value";
+        }
+        $var = implode(',', $var);
+        $sql = "UPDATE $tableName SET $var WHERE id={$this->id}";
         var_dump($sql . '<br>');
     }
 
@@ -56,7 +74,8 @@ abstract class Model
 
     public function delete()
     {
-        $tableName = static::class;
+        $tableName = explode('\\', static::class);
+        $tableName = end($tableName);
         $sql = "DELETE FROM $tableName WHERE id={$this->id}";
         var_dump($sql . '<br>');
     }

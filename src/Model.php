@@ -24,11 +24,13 @@ abstract class Model
     {
         $tableName = static::class;
         $cols = [];
+
         foreach (array_keys(get_class_vars(static::class)) as $el) {
             if ($el !== 'id') {
                 $cols[] = $el;
             }
         }
+
         $colsWithoutID = implode(',', $cols);
         $sql = "INSERT INTO $tableName ($colsWithoutID) VALUES ($this->name, $this->email)";
         var_dump($sql . '<br>');

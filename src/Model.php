@@ -27,6 +27,7 @@ abstract class Model
         $tableName = explode('\\', static::class);
         $tableName = end($tableName);
         $cols = [];
+
         foreach (array_keys(get_class_vars(static::class)) as $el) {
             if ($el !== 'id') {
                 $cols[] = $el;
@@ -55,8 +56,10 @@ abstract class Model
 
         $varArr = [];
         foreach (array_keys(get_class_vars(static::class)) as $el){
-            $value = $this->{$el};
-            $var[]= "$el=$value";
+            if($el!='id'){
+                $value = $this->{$el};
+                $var[]= "$el=$value";
+            }
         }
         $var = implode(',', $var);
         $sql = "UPDATE $tableName SET $var WHERE id={$this->id}";

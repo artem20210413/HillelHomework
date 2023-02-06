@@ -26,6 +26,8 @@ $blog1->save();
 $blog1 = new Blog();
 $blog1->article_name = 'article_2';
 $blog1->save();
+$blog1->delete();
+
 
 
 

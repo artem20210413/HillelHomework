@@ -1,33 +1,52 @@
 <?php
-declare(strict_types=1);
+//declare(strict_types=1);
+
+require_once "./vendor/autoload.php";
+require_once "./db_config.php";
 
 
-use Artem\HillelHomework\Blog;
-use Artem\HillelHomework\User;
+use App\Model\Categor;
+use App\Model\Post;
+use App\Model\Tag;
 
-require_once __DIR__ . "./vendor/autoload.php";
 
-$user1 = User::find(1);
-$user1->name = 'Artem';
-$user1->email = 'artem@gmail.com';
-$user1->save();
-$user1->delete();
+//$categor = new Categor();
+//$categor->name = 'category_1';
+//$categor->save();
+//
+//$categor = new Categor();
+//$categor->name = 'category_2';
+//$categor->save();
+//
+//$categor = new Categor();
+//$categor->name = 'category_3';
+//$categor->save();
+//
+//$tag = new Tag();
+//$tag->name = 'tag_1';
+//$tag->save();
+//
+//$tag = new Tag();
+//$tag->name = 'tag_2';
+//$tag->save();
+//$tag = new Tag();
+//$tag->name = 'tag_3';
+//$tag->save();
 
-$userNew = new User();
-$userNew->name = 'newArtem';
-$userNew->email = 'new.artem@gmail.com';
-$userNew->save();
-$userNew->delete();
+//$post1 = new Post();
+//$post1->category_id = 1;
+//$post1->header = 'header post_1';
+//$post1->comment = 'comment post_1';
+//$post1->save();
+//
+//$post2 = new Post();
+//$post2->category_id = 1;
+//$post2->header = 'header post_2';
+//$post2->comment = 'comment post_2';
+//$post2->save();
 
-$blog1 = Blog::find(1);
-$blog1->article_name = 'article_1';
-$blog1->save();
 
-$blog1 = new Blog();
-$blog1->article_name = 'article_2';
-$blog1->save();
-$blog1->delete();
-
+//$post = Post::find(1);
 
 
 

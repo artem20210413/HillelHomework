@@ -5,17 +5,14 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Tag extends Model
+class Teg extends Model
 {
-    public $table = 'tag';
+    public $table = 'teg';
 
     protected $fillable = [
         'id',
         'name',
     ];
 
-//     public function post()
-//     {
-//         return $this->belongsToMany(Post::class)->withTimestamps();
-//     }
+
 }

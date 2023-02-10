@@ -22,4 +22,8 @@ class Post extends Model
     {
         return $this->hasOne(Categor::class, 'id', 'category_id');
     }
+    public function teg()
+    {
+        return $this->belongsToMany(Teg::class)->withTimestamps();
+    }
 }

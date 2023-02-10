@@ -1,0 +1,12 @@
+{
+    "name": "artem/hillel-homework",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/database" : "9.*",
+        "illuminate/events": "^9.51"
+    }
+}

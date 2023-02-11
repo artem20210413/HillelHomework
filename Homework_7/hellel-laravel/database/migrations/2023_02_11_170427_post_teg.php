@@ -13,15 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::create('post_teg', function ($table) {
             $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('teg_id');
             $table->timestamps();
+
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('post')
+                ->onDelete('restrict');
+
+            $table->foreign('teg_id')
+                ->references('id')
+                ->on('teg')
+                ->onDelete('restrict');
         });
     }
 
@@ -32,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        //
     }
 };

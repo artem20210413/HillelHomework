@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\TegController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('list-categories', [CategoriesController::class, 'show']);
+Route::get('create-categories', [CategoriesController::class, 'createShow']);
+Route::post('create-categories', [CategoriesController::class, 'create']);
+Route::get('update-categories/{category}', [CategoriesController::class, 'updateShow']);
+Route::post('update-categories/{id}', [CategoriesController::class, 'update']);
+Route::post('delete-categories/{categor}', [CategoriesController::class, 'delete']);
+
+
+Route::get('list-tags', [TegController::class, 'show']);
+Route::get('create-teg', [TegController::class, 'createShow']);
+Route::post('create-teg', [TegController::class, 'create']);
+Route::get('update-teg/{teg}', [TegController::class, 'updateShow']);
+Route::post('update-teg/{teg}', [TegController::class, 'update']);
+Route::post('delete-teg/{teg}', [TegController::class, 'delete']);

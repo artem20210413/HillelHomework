@@ -14,23 +14,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"--}}
-    {{--            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="--}}
-    {{--            crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
-
-    {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">--}}
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>--}}
-
 </head>
 
 <body>
 @include('components.header')
 
 <div class="container">
-    @yield('body')
-    @include('components.footer')
+    <div class="text-center">
+        @yield('body')
+        @include('components.footer')
+    </div>
 </div>
 
-{{--<script type="text/javascript" src="./resources/js/script.js"></script>--}}
 </body>
 </html>

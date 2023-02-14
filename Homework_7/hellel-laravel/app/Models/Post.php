@@ -5,6 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+
+/**
+ * Class Post
+ * @package App\Models
+ * @property integer $id
+ * @property integer category_id
+ * @property string header
+ * @property string comment
+ */
 class Post extends Model
 
 {
@@ -22,6 +31,7 @@ class Post extends Model
     {
         return $this->hasOne(Categor::class, 'id', 'category_id');
     }
+
     public function teg()
     {
         return $this->belongsToMany(Teg::class)->withTimestamps();

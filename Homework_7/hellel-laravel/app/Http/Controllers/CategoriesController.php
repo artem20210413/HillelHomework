@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CategoriesService;
 use App\Models\Categor;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -14,49 +15,38 @@ class CategoriesController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function show()
+    public function show(CategoriesService $service)
     {
-        $category = Categor::all();
-
-        return view('pages.list-categories', ['category' => $category]);
+        return $service->show();
     }
 
-    public function createShow()
+    public function createShow(CategoriesService $service)
     {
-        return view('pages.create-categories');
+
+        return $service->createShow();
     }
 
-    public function create(Request $request)
+    public function create(Request $request, CategoriesService $service)
     {
-        $category = new Categor();
-        $category->name = $request->name;
-        $category->save();
 
-        return redirect('list-categories');
+        return $service->create($request);
     }
 
-    public function updateShow(Categor $category)
+    public function updateShow(Categor $category, CategoriesService $service)
     {
-        return view('pages.update-categories', ['category' => $category]);
+        return $service->updateShow($category);
     }
 
-    public function update($id, Request $request)
+    public function update($id, Request $request, CategoriesService $service)
     {
-        $category = Categor::find($id);
-        $category->name = $request->name;
-        $category->save();
 
-        return redirect('list-categories');
+        return $service->update($id, $request);
     }
 
 
-
-
-
-    public function delete(Categor $categor)
+    public function delete(Categor $categor, CategoriesService $service)
     {
-        $categor->delete();
 
-        return redirect('list-categories');
+        return $service->delete($categor);
     }
 }

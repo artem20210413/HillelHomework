@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teg;
+use App\Services\TegService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,11 +15,9 @@ class TegController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function show()
+    public function show(TegService $service)
     {
-        $tags = Teg::all();
-
-        return view('pages.list-tags', ['tags' => $tags]);
+        return $service->show();
     }
 
     public function createShow()
@@ -27,34 +26,30 @@ class TegController extends BaseController
         return view('pages.create-teg');
     }
 
-    public function create(Request $request)
-    {
-        $teg = new Teg();
-        $teg->name = $request->name;
-        $teg->save();
 
-        return redirect('list-tags');
+    public function create(Request $request, TegService $service)
+    {
+
+        return $service->create($request);
     }
 
-    public function updateShow(Teg $teg)
+
+    public function updateShow(Teg $teg, TegService $service)
     {
 
-        return view('pages.update-teg', ['teg' => $teg]);
+        return $service->updateShow($teg);
     }
 
-    public function update(Teg $teg, Request $request)
+    public function update(Teg $teg, Request $request, TegService $service)
     {
-        $teg->name = $request->name;
-        $teg->save();
 
-        return redirect('list-tags');
+        return $service->update($teg, $request);
     }
 
-    public function delete(Teg $teg)
+    public function delete(Teg $teg, TegService $service)
     {
-        $teg->delete();
 
-        return redirect('list-tags');
+        return $service->delete($teg);
     }
 
 }

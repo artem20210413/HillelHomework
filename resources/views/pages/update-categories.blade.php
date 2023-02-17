@@ -20,7 +20,7 @@
                 </div>
             @endif
             <label class="form-label">Id category</label>
-            <input type="text" name="id" class="form-control" id="exampleInputPassword1" value="{{$category->id}}">
+            <input type="text" name="id" class="form-control" id="exampleInputPassword1" value="{{$category->id}}" disabled>
         </div>
         <div class="mb-3 mt-5">
             <label class="form-label">Name category</label>

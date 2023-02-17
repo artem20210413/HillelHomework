@@ -17,36 +17,44 @@ class CategoriesController extends BaseController
 
     public function show(CategoriesService $service)
     {
-        return $service->show();
+        return view('pages.list-categories', $service->show());
     }
 
     public function createShow(CategoriesService $service)
     {
 
-        return $service->createShow();
+        return view('pages.create-categories');
     }
 
     public function create(Request $request, CategoriesService $service)
     {
+        $name = $request->name;
 
-        return $service->create($request);
+        $service->create($name);
+
+        return redirect('list-categories');
     }
 
     public function updateShow(Categor $category, CategoriesService $service)
     {
-        return $service->updateShow($category);
+
+        return view('pages.update-categories', $service->updateShow($category));
     }
 
     public function update($id, Request $request, CategoriesService $service)
     {
+        $name = $request->name;
 
-        return $service->update($id, $request);
+        $service->update($id, $name);
+
+        return redirect('list-categories');
     }
 
 
     public function delete(Categor $categor, CategoriesService $service)
     {
+        $service->delete($categor);
 
-        return $service->delete($categor);
+        return redirect('list-categories');
     }
 }

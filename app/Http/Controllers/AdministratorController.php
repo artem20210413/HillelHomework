@@ -12,10 +12,10 @@ class AdministratorController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function show(AdministratorService $service)
+    public function show()
     {
 
-        return $service->show();
+        return view('pages.administrator.administrator');
     }
 
 }

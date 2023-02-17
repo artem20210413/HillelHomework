@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Categor;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class CategoriesService
@@ -11,41 +12,39 @@ class CategoriesService
     {
         $category = Categor::all();
 
-        return view('pages.list-categories', ['category' => $category]);
+        return ['category' => $category];
     }
 
-    public function createShow()
+    public function create(string $name)
     {
-        return view('pages.create-categories');
-    }
+        try {
+            $category = new Categor();
+            $category->name = $name;
+            $category->save();
 
-    public function create(Request $request)
-    {
-        $category = new Categor();
-        $category->name = $request->name;
-        $category->save();
+            return true;
+        } catch (\Exception $e) {
 
-        return redirect('list-categories');
+            return false;
+        }
     }
 
     public function updateShow(Categor $category)
     {
-        return view('pages.update-categories', ['category' => $category]);
+        return ['category' => $category];
     }
 
-    public function update($id, Request $request)
+    public function update($id, $name)
     {
         $category = Categor::find($id);
-        $category->name = $request->name;
+        $category->name = $name;
         $category->save();
 
-        return redirect('list-categories');
     }
 
     public function delete(Categor $categor)
     {
         $categor->delete();
 
-        return redirect('list-categories');
     }
 }

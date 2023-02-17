@@ -17,7 +17,8 @@ class TegController extends BaseController
 
     public function show(TegService $service)
     {
-        return $service->show();
+
+        return view('pages.list-tags', $service->show());
     }
 
     public function createShow()
@@ -29,27 +30,31 @@ class TegController extends BaseController
 
     public function create(Request $request, TegService $service)
     {
+        $name = $request->name;
+        $service->create($name);
 
-        return $service->create($request);
+        return redirect('list-tags');
     }
 
 
     public function updateShow(Teg $teg, TegService $service)
     {
 
-        return $service->updateShow($teg);
+        return view('pages.update-teg',  $service->updateShow($teg));
     }
 
     public function update(Teg $teg, Request $request, TegService $service)
     {
+        $service->update($teg, $request);
 
-        return $service->update($teg, $request);
+        return redirect('list-tags');
     }
 
     public function delete(Teg $teg, TegService $service)
     {
+        $service->delete($teg);
 
-        return $service->delete($teg);
+        return redirect('list-tags');
     }
 
 }

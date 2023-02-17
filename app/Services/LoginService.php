@@ -8,7 +8,7 @@ class LoginService
     public function show()
     {
 
-        return view('pages.login.login');
+
     }
 
 }

@@ -13,7 +13,7 @@ class TegRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class TegRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:teg,name|max:100|min:3'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Поле імені є обов’язковим для заповнення.',
+            'name.unique' => 'Назва вже зайнята.',
+            'name.min' => 'Назва повинно містити не менше 3 символів.',
+            'name.max' => 'Назва не повинна перевищувати 100 символів.',
+
+
+
         ];
     }
 }

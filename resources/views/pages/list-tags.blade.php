@@ -9,6 +9,14 @@
 
     <a href="/create-teg" class="m-3 btn btn-primary">create new category</a>
 
+    @if(isset($successMessage))
+        <div class="alert alert-success">
+            <ul>
+                <li>{{$successMessage}}</li>
+            </ul>
+        </div>
+    @endif
+
     <table class="table table table-hover">
         <thead>
         <tr>

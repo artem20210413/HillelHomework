@@ -2,6 +2,7 @@
     <ul class="nav nav-pills">
 {{--        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>--}}
         <li class="nav-item"><a href="/list-categories" class="nav-link" aria-current="page">list-categories</a></li>
+        <li class="nav-item"><a href="/list-posts" class="nav-link" aria-current="page">list-posts</a></li>
         <li class="nav-item"><a href="/list-tags" class="nav-link">list-tags</a></li>
     </ul>
 </header>

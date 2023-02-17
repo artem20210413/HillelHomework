@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Services\CategoriesService;
 use App\Models\Categor;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -17,7 +18,11 @@ class CategoriesController extends BaseController
 
     public function show(CategoriesService $service)
     {
-        return view('pages.list-categories', $service->show());
+
+        $response = $service->show();
+        $response['successMessage'] = session('successMessage');
+
+        return view('pages.list-categories', $response);
     }
 
     public function createShow(CategoriesService $service)
@@ -26,11 +31,11 @@ class CategoriesController extends BaseController
         return view('pages.create-categories');
     }
 
-    public function create(Request $request, CategoriesService $service)
+    public function create(CategoryRequest $request, CategoriesService $service)
     {
         $name = $request->name;
-
         $service->create($name);
+        session()->flash('successMessage', "Successfully create");
 
         return redirect('list-categories');
     }
@@ -41,11 +46,11 @@ class CategoriesController extends BaseController
         return view('pages.update-categories', $service->updateShow($category));
     }
 
-    public function update($id, Request $request, CategoriesService $service)
+    public function update($id, CategoryRequest $request, CategoriesService $service)
     {
         $name = $request->name;
-
         $service->update($id, $name);
+        session()->flash('successMessage', "Successfully update id: $id");
 
         return redirect('list-categories');
     }
@@ -54,6 +59,7 @@ class CategoriesController extends BaseController
     public function delete(Categor $categor, CategoriesService $service)
     {
         $service->delete($categor);
+        session()->flash('successMessage', "Successfully delete");
 
         return redirect('list-categories');
     }

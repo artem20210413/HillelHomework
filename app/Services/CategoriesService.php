@@ -17,16 +17,9 @@ class CategoriesService
 
     public function create(string $name)
     {
-        try {
             $category = new Categor();
             $category->name = $name;
             $category->save();
-
-            return true;
-        } catch (\Exception $e) {
-
-            return false;
-        }
     }
 
     public function updateShow(Categor $category)

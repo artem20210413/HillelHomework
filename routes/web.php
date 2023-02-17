@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TegController;
 use App\Services\LoginService;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,5 @@ Route::post('create-teg', [TegController::class, 'create']);
 Route::get('update-teg/{teg}', [TegController::class, 'updateShow']);
 Route::post('update-teg/{teg}', [TegController::class, 'update']);
 Route::post('delete-teg/{teg}', [TegController::class, 'delete']);
+
+Route::get('list-posts', [PostController::class, 'show']);

@@ -1,19 +1,12 @@
 <?php
-
-namespace App\Http\Controllers;
+namespace App\Services;
 
 use App\Models\Teg;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
 
-class TegController extends BaseController
+class TegService
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-
     public function show()
     {
         $tags = Teg::all();
@@ -56,5 +49,4 @@ class TegController extends BaseController
 
         return redirect('list-tags');
     }
-
 }

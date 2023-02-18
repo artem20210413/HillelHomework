@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TegController;
+use App\Services\LoginService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('administrator', [AdministratorController::class, 'show']);
+});
+
+
+Route::get('login', [LoginService::class, 'show'])->name('login');
+
 
 Route::get('list-categories', [CategoriesController::class, 'show']);
 Route::get('create-categories', [CategoriesController::class, 'createShow']);

@@ -1,20 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Services;
 
 use App\Models\Categor;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
 
-class CategoriesController extends BaseController
+class CategoriesService
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-
     public function show()
     {
         $category = Categor::all();
@@ -49,10 +41,6 @@ class CategoriesController extends BaseController
 
         return redirect('list-categories');
     }
-
-
-
-
 
     public function delete(Categor $categor)
     {

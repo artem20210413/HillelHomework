@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('post', function ($table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->string('header',191);
-            $table->string('comment',1000);
+            $table->string('header',100);
+            $table->string('comment',600);
             $table->timestamps();
 
 

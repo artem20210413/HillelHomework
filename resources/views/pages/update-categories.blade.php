@@ -26,7 +26,7 @@
             <label class="form-label">Name category</label>
             <input type="text" name="name" class="form-control" id="exampleInputPassword1" value="{{$category->name}}">
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary m-3">Save</button>
     </form>
 
 @endsection

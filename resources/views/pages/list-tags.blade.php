@@ -7,7 +7,7 @@
 
 @section('body')
 
-    <a href="/create-teg" class="m-3 btn btn-primary">create new category</a>
+    <a href="/create-teg" class="m-3 btn btn-primary">create new teg</a>
 
     @if(isset($successMessage))
         <div class="alert alert-success">

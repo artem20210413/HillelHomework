@@ -46,4 +46,8 @@ Route::post('update-teg/{teg}', [TegController::class, 'update']);
 Route::post('delete-teg/{teg}', [TegController::class, 'delete']);
 
 Route::get('list-posts', [PostController::class, 'show']);
-Route::get('create-posts', [PostController::class, 'createShow']);
+Route::get('create-post', [PostController::class, 'createShow']);
+Route::post('create-post', [PostController::class, 'create']);
+Route::get('update-post/{post}', [PostController::class, 'updateShow']);
+Route::post('update-post/{post}', [PostController::class, 'update']);
+Route::post('delete-post/{post}', [PostController::class, 'delete']);

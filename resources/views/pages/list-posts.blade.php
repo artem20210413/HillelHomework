@@ -7,8 +7,15 @@
 
 @section('body')
 
-    <a class="btn btn-primary" href="/create-posts" >Create</a>
+    <a class="m-3 btn btn-primary" href="/create-post">Create new post</a>
 
+    @if(isset($successMessage))
+        <div class="alert alert-success">
+            <ul>
+                <li>{{$successMessage}}</li>
+            </ul>
+        </div>
+    @endif
 
     <table class="table table table-hover">
         <thead>
@@ -25,22 +32,26 @@
 
         <tbody style="cursor: pointer;">
         @foreach($posts as $el)
-            <tr>
-                <form action="/delete-categories/{{$el->id}}" method="POST">
-                    <th scope="row">{{$el->id}}</th>
-                    <td>{{$el->category->name}}</td>
-                    <td>{{$el->header}}</td>
-                    <td>{{$el->comment}}</td>
-                    <td>
-                        @foreach($el->teg as $tegEl)
-                            {{$tegEl->name}},
-                        @endforeach
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-danger">delete</button>
-                    </td>
-                </form>
-            </tr>
+            <a href="/update-post/{{$el->id}}">
+                <tr onclick="window.location = '/update-post/{{$el->id}}'">
+                    <form action="/delete-post/{{$el->id}}" method="POST">
+
+                        <th scope="row">{{$el->id}}</th>
+                        <td>{{$el->category->name}}</td>
+                        <td>{{$el->header}}</td>
+                        <td>{{$el->comment}}</td>
+                        <td>
+                            @foreach($el->teg as $tegEl)
+                                {{$tegEl->name}},
+                            @endforeach
+                        </td>
+
+                        <td>
+                            <button type="submit" class="btn btn-danger">delete</button>
+                        </td>
+                    </form>
+                </tr>
+            </a>
 
         @endforeach
         </tbody>

@@ -10,10 +10,12 @@
 {{--                    <a class="nav-link active" aria-current="page" href="#">Centered nav only</a>--}}
 {{--                </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/list-categories">list-categories</a>
-                </li><li class="nav-item">
                     <a class="nav-link" href="/list-posts">list-posts</a>
-                </li><li class="nav-item">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/list-categories">list-categories</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/list-tags">list-tags</a>
                 </li>
 {{--                <li class="nav-item">--}}

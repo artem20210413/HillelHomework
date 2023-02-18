@@ -36,9 +36,6 @@ class CategoryRequest extends FormRequest
             'name.unique' => 'Назва вже зайнята.',
             'name.min' => 'Назва повинно містити не менше 3 символів.',
             'name.max' => 'Назва не повинна перевищувати 100 символів.',
-
-
-
         ];
     }
 }

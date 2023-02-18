@@ -22,7 +22,7 @@
             <label class="form-label">Name teg</label>
             <input type="text" name="name" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary m-3">Save</button>
     </form>
 
 @endsection

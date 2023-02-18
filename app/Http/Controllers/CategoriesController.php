@@ -8,19 +8,17 @@ use App\Models\Categor;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class CategoriesController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
     public function show(CategoriesService $service)
     {
-
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
+        $response['errorMessage'] = session('errorMessage');
 
         return view('pages.list-categories', $response);
     }
@@ -58,8 +56,9 @@ class CategoriesController extends BaseController
 
     public function delete(Categor $categor, CategoriesService $service)
     {
-        $service->delete($categor);
-        session()->flash('successMessage', "Successfully delete");
+        if (!$service->delete($categor)) {
+            session()->flash('successMessage', "Successfully delete");
+        }
 
         return redirect('list-categories');
     }

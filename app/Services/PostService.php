@@ -31,6 +31,7 @@ class PostService
         $post->header = $header;
         $post->comment = $comment;
         $post->save();
+
         if ($tags != []) {
             foreach ($tags as $kay => $el) {
                 $post->teg()->attach(Teg::find($kay));
@@ -49,6 +50,7 @@ class PostService
         foreach ($post->teg as $el) {
             $post->teg()->detach($el);
         }
+
         if ($tags != []) {
             foreach ($tags as $kay => $el) {
                 $post->teg()->attach(Teg::find($kay));

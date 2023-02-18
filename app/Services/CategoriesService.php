@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Categor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class CategoriesService
 {
@@ -17,13 +18,14 @@ class CategoriesService
 
     public function create(string $name)
     {
-            $category = new Categor();
-            $category->name = $name;
-            $category->save();
+        $category = new Categor();
+        $category->name = $name;
+        $category->save();
     }
 
     public function updateShow(Categor $category)
     {
+
         return ['category' => $category];
     }
 
@@ -32,12 +34,22 @@ class CategoriesService
         $category = Categor::find($id);
         $category->name = $name;
         $category->save();
-
     }
 
     public function delete(Categor $categor)
     {
-        $categor->delete();
+        $errors = 'Категорія пов`язана з постами: ';
+        $isError = false;
+        foreach ($categor->post()->get() as $el) {
+            $isError = true;
+            $errors .= "{$el->id}, ";
+        }
+        if ($isError) {
+            Session()->flash('errorMessage', $errors);
+        } else {
+            $categor->delete();
+        }
 
+        return $isError;
     }
 }

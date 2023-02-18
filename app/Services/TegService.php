@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Teg;
@@ -34,6 +35,18 @@ class TegService
 
     public function delete(Teg $teg)
     {
-        $teg->delete();
+        $errors = 'Тег пов`язана з постами: ';
+        $isError = false;
+        foreach ($teg->post()->get() as $el) {
+            $isError = true;
+            $errors .= "{$el->id}, ";
+        }
+        if ($isError) {
+            Session()->flash('errorMessage', $errors);
+        } else {
+            $teg->delete();
+        }
+
+        return $isError;
     }
 }

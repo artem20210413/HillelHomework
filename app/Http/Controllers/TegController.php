@@ -8,7 +8,6 @@ use App\Services\TegService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class TegController extends BaseController
@@ -20,6 +19,7 @@ class TegController extends BaseController
     {
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
+        $response['errorMessage'] = session('errorMessage');
 
         return view('pages.list-tags', $response);
     }
@@ -57,8 +57,9 @@ class TegController extends BaseController
 
     public function delete(Teg $teg, TegService $service)
     {
-        $service->delete($teg);
-        session()->flash('successMessage', "Successfully delete");
+        if (!$service->delete($teg)) {
+            session()->flash('successMessage', "Successfully delete");
+        }
 
         return redirect('list-tags');
     }

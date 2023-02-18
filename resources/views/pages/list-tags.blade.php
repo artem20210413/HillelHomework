@@ -17,6 +17,14 @@
         </div>
     @endif
 
+    @if(isset($errorMessage))
+        <div class="alert alert-danger">
+            <ul>
+                <li>{{$errorMessage}}</li>
+            </ul>
+        </div>
+    @endif
+
     <table class="table table table-hover">
         <thead>
         <tr>

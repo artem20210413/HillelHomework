@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Categor;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class CategoriesService
 {
@@ -11,41 +13,43 @@ class CategoriesService
     {
         $category = Categor::all();
 
-        return view('pages.list-categories', ['category' => $category]);
+        return ['category' => $category];
     }
 
-    public function createShow()
-    {
-        return view('pages.create-categories');
-    }
-
-    public function create(Request $request)
+    public function create(string $name)
     {
         $category = new Categor();
-        $category->name = $request->name;
+        $category->name = $name;
         $category->save();
-
-        return redirect('list-categories');
     }
 
     public function updateShow(Categor $category)
     {
-        return view('pages.update-categories', ['category' => $category]);
+
+        return ['category' => $category];
     }
 
-    public function update($id, Request $request)
+    public function update($id, $name)
     {
         $category = Categor::find($id);
-        $category->name = $request->name;
+        $category->name = $name;
         $category->save();
-
-        return redirect('list-categories');
     }
 
     public function delete(Categor $categor)
     {
-        $categor->delete();
+        $errors = 'Категорія пов`язана з постами: ';
+        $isError = false;
+        foreach ($categor->post()->get() as $el) {
+            $isError = true;
+            $errors .= "{$el->id}, ";
+        }
+        if ($isError) {
+            Session()->flash('errorMessage', $errors);
+        } else {
+            $categor->delete();
+        }
 
-        return redirect('list-categories');
+        return $isError;
     }
 }

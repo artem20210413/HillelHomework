@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Teg;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class TegService
@@ -11,42 +11,42 @@ class TegService
     {
         $tags = Teg::all();
 
-        return view('pages.list-tags', ['tags' => $tags]);
+        return ['tags' => $tags];
     }
 
-    public function createShow()
-    {
-
-        return view('pages.create-teg');
-    }
-
-    public function create(Request $request)
+    public function create($name)
     {
         $teg = new Teg();
-        $teg->name = $request->name;
+        $teg->name = $name;
         $teg->save();
-
-        return redirect('list-tags');
     }
 
     public function updateShow(Teg $teg)
     {
 
-        return view('pages.update-teg', ['teg' => $teg]);
+        return ['teg' => $teg];
     }
 
     public function update(Teg $teg, Request $request)
     {
         $teg->name = $request->name;
         $teg->save();
-
-        return redirect('list-tags');
     }
 
     public function delete(Teg $teg)
     {
-        $teg->delete();
+        $errors = 'Тег пов`язана з постами: ';
+        $isError = false;
+        foreach ($teg->post()->get() as $el) {
+            $isError = true;
+            $errors .= "{$el->id}, ";
+        }
+        if ($isError) {
+            Session()->flash('errorMessage', $errors);
+        } else {
+            $teg->delete();
+        }
 
-        return redirect('list-tags');
+        return $isError;
     }
 }

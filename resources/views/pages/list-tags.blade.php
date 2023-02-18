@@ -7,7 +7,23 @@
 
 @section('body')
 
-    <a href="/create-teg" class="m-3 btn btn-primary">create new category</a>
+    <a href="/create-teg" class="m-3 btn btn-primary">create new teg</a>
+
+    @if(isset($successMessage))
+        <div class="alert alert-success">
+            <ul>
+                <li>{{$successMessage}}</li>
+            </ul>
+        </div>
+    @endif
+
+    @if(isset($errorMessage))
+        <div class="alert alert-danger">
+            <ul>
+                <li>{{$errorMessage}}</li>
+            </ul>
+        </div>
+    @endif
 
     <table class="table table table-hover">
         <thead>

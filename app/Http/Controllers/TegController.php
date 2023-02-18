@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TegRequest;
 use App\Models\Teg;
 use App\Services\TegService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class TegController extends BaseController
@@ -17,7 +17,11 @@ class TegController extends BaseController
 
     public function show(TegService $service)
     {
-        return $service->show();
+        $response = $service->show();
+        $response['successMessage'] = session('successMessage');
+        $response['errorMessage'] = session('errorMessage');
+
+        return view('pages.list-tags', $response);
     }
 
     public function createShow()
@@ -27,29 +31,37 @@ class TegController extends BaseController
     }
 
 
-    public function create(Request $request, TegService $service)
+    public function create(TegRequest $request, TegService $service)
     {
+        $name = $request->name;
+        $service->create($name);
+        session()->flash('successMessage', "Successfully create");
 
-        return $service->create($request);
+        return redirect('list-tags');
     }
 
 
     public function updateShow(Teg $teg, TegService $service)
     {
 
-        return $service->updateShow($teg);
+        return view('pages.update-teg', $service->updateShow($teg));
     }
 
-    public function update(Teg $teg, Request $request, TegService $service)
+    public function update(Teg $teg, TegRequest $request, TegService $service)
     {
+        $service->update($teg, $request);
+        session()->flash('successMessage', "Successfully update id: $teg->id");
 
-        return $service->update($teg, $request);
+        return redirect('list-tags');
     }
 
     public function delete(Teg $teg, TegService $service)
     {
+        if (!$service->delete($teg)) {
+            session()->flash('successMessage', "Successfully delete");
+        }
 
-        return $service->delete($teg);
+        return redirect('list-tags');
     }
 
 }

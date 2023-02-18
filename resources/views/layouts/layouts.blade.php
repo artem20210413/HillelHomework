@@ -22,9 +22,8 @@
 <div class="container">
     <div class="text-center">
         @yield('body')
-        @include('components.footer')
     </div>
 </div>
-
+@include('components.footer')
 </body>
 </html>

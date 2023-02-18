@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Categor
@@ -21,4 +22,8 @@ class Categor extends Model
         'active'
     ];
 
+    public function post(): hasMany
+    {
+        return $this->hasMany(Post::class, 'category_id', 'id');
+    }
 }

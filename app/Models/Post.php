@@ -26,7 +26,6 @@ class Post extends Model
         'category_id',
         'header',
         'comment'
-
     ];
 
     public function category(): HasOne

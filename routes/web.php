@@ -46,3 +46,4 @@ Route::post('update-teg/{teg}', [TegController::class, 'update']);
 Route::post('delete-teg/{teg}', [TegController::class, 'delete']);
 
 Route::get('list-posts', [PostController::class, 'show']);
+Route::get('create-posts', [PostController::class, 'createShow']);

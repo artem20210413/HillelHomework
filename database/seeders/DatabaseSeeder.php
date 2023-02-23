@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             teg_seeder::class,
             post_seeder::class,
             post_teg_seeder::class,
+            user_seeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

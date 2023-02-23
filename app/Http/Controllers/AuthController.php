@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Services\AdministratorService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -18,6 +19,31 @@ class AuthController extends BaseController
     public function login()
     {
         return view('pages.auth.login', []);
+    }
+
+    public function registration()
+    {
+        return view('pages.auth.registration', []);
+    }
+
+    public function handleRegistration(Request $request)
+    {
+        $request->validate([
+            'userName' => 'required',
+            'email' => 'required',
+            'password' => 'required', // 6<
+        ]);
+        $userName = $request->userName;
+        $email = $request->email;
+        $password = $request->password;
+
+        $user = new User();
+        $user->userName = $userName;
+        $user->email = $email;
+        $user->setPasswordAttribute($password);
+        $user->save();
+
+        return redirect('logout')->withSuccess('Registered');
     }
 
     public function handleLogin(Request $request)

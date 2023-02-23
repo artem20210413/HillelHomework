@@ -27,20 +27,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('administrator', [AdministratorController::class, 'show']);
 });
 
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'handleLogin']);
+Route::get('/registration', [AuthController::class, 'registration']);
+Route::post('/registration', [AuthController::class, 'handleRegistration']);
 
-//Route::get('login', [LoginService::class, 'show'])->name('login');
-
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Route::resources([
 //    'categories' => CategoriesController::class,
 //]);
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'handleLogin']);
-
-Route::get('/logout', [AuthController::class, 'logout']);
 
 
+Route::get('list-categories', [CategoriesController::class, 'show']);
 Route::get('create-categories', [CategoriesController::class, 'createShow']);
 Route::post('create-categories', [CategoriesController::class, 'create']);
 Route::get('update-categories/{category}', [CategoriesController::class, 'updateShow']);

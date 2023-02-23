@@ -52,7 +52,11 @@
         {{--            </div>--}}
 
         <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+            <p class="text-center text-muted mt-5 mb-0">Don't have an account yet?
+                <a href="/registration" class="fw-bold text-body"><u>Registration</u></a></p>
 
         </form>
     </section>

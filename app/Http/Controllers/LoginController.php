@@ -15,7 +15,6 @@ class LoginController extends BaseController
 
     public function show(LoginService $service)
     {
-
         return view('pages.login.login');
     }
 

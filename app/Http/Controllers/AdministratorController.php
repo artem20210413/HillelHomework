@@ -14,7 +14,6 @@ class AdministratorController extends BaseController
 
     public function show()
     {
-
         return view('pages.administrator.administrator');
     }
 

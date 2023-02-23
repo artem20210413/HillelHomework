@@ -19,6 +19,7 @@ class TegService
         $teg = new Teg();
         $teg->name = $name;
         $teg->save();
+        session()->flash('successMessage', "Successfully create");
     }
 
     public function updateShow(Teg $teg)
@@ -31,6 +32,7 @@ class TegService
     {
         $teg->name = $request->name;
         $teg->save();
+        session()->flash('successMessage', "Successfully update id: $teg->id");
     }
 
     public function delete(Teg $teg)
@@ -45,8 +47,7 @@ class TegService
             Session()->flash('errorMessage', $errors);
         } else {
             $teg->delete();
+            session()->flash('successMessage', "Successfully delete");
         }
-
-        return $isError;
     }
 }

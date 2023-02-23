@@ -26,7 +26,6 @@ class TegController extends BaseController
 
     public function createShow()
     {
-
         return view('pages.create-teg');
     }
 
@@ -35,7 +34,6 @@ class TegController extends BaseController
     {
         $name = $request->name;
         $service->create($name);
-        session()->flash('successMessage', "Successfully create");
 
         return redirect('list-tags');
     }
@@ -50,16 +48,13 @@ class TegController extends BaseController
     public function update(Teg $teg, TegRequest $request, TegService $service)
     {
         $service->update($teg, $request);
-        session()->flash('successMessage', "Successfully update id: $teg->id");
 
         return redirect('list-tags');
     }
 
     public function delete(Teg $teg, TegService $service)
     {
-        if (!$service->delete($teg)) {
-            session()->flash('successMessage', "Successfully delete");
-        }
+        $service->delete($teg);
 
         return redirect('list-tags');
     }

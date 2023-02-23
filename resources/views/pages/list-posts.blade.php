@@ -17,6 +17,15 @@
         </div>
     @endif
 
+    @error('name')
+    <div class="alert alert-danger mt-3">
+        <ul>
+            <li>{{$message}}</li>
+        </ul>
+    </div>
+    @enderror
+
+
     <table class="table table table-hover">
         <thead>
         <tr>

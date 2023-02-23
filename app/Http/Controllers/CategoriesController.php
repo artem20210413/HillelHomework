@@ -25,7 +25,6 @@ class CategoriesController extends BaseController
 
     public function createShow(CategoriesService $service)
     {
-
         return view('pages.create-categories');
     }
 
@@ -33,14 +32,12 @@ class CategoriesController extends BaseController
     {
         $name = $request->name;
         $service->create($name);
-        session()->flash('successMessage', "Successfully create");
 
         return redirect('list-categories');
     }
 
     public function updateShow(Categor $category, CategoriesService $service)
     {
-
         return view('pages.update-categories', $service->updateShow($category));
     }
 
@@ -48,7 +45,6 @@ class CategoriesController extends BaseController
     {
         $name = $request->name;
         $service->update($id, $name);
-        session()->flash('successMessage', "Successfully update id: $id");
 
         return redirect('list-categories');
     }
@@ -56,9 +52,7 @@ class CategoriesController extends BaseController
 
     public function delete(Categor $categor, CategoriesService $service)
     {
-        if (!$service->delete($categor)) {
-            session()->flash('successMessage', "Successfully delete");
-        }
+        $service->delete($categor);
 
         return redirect('list-categories');
     }

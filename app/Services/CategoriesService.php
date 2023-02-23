@@ -21,6 +21,7 @@ class CategoriesService
         $category = new Categor();
         $category->name = $name;
         $category->save();
+        session()->flash('successMessage', "Successfully create");
     }
 
     public function updateShow(Categor $category)
@@ -34,6 +35,7 @@ class CategoriesService
         $category = Categor::find($id);
         $category->name = $name;
         $category->save();
+        session()->flash('successMessage', "Successfully update id: $id");
     }
 
     public function delete(Categor $categor)
@@ -48,8 +50,7 @@ class CategoriesService
             Session()->flash('errorMessage', $errors);
         } else {
             $categor->delete();
+            session()->flash('successMessage', "Successfully delete");
         }
-
-        return $isError;
     }
 }

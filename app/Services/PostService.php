@@ -38,6 +38,7 @@ class PostService
             }
         }
         $post->save();
+        session()->flash('successMessage', "Successfully create");
     }
 
     public function update($post, $category_id, $header, $comment, $tags)
@@ -57,6 +58,7 @@ class PostService
             }
         }
         $post->save();
+        session()->flash('successMessage', "Successfully update id: $post->id");
     }
 
     public function updateShow(Post $post)
@@ -73,6 +75,7 @@ class PostService
             $post->teg()->detach($el);
         }
         $post->delete();
+        session()->flash('successMessage', "Successfully delete id: $post->id");
     }
 
 

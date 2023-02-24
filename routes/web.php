@@ -55,17 +55,17 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
-
-
-
-Route::resources([
-    'categories' => CategoriesController::class,
-]);
-
-
 Route::get('list-categories', [CategoriesController::class, 'show'])->name('list-categories');
 Route::get('list-tags', [TegController::class, 'show'])->name('list-tags');
 Route::get('list-posts', [PostController::class, 'show'])->name('list-posts');
+
+
+
+//Route::resources([
+//    'categories' => CategoriesController::class,
+//]);
+
+
+
 
 

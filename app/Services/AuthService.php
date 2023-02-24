@@ -4,7 +4,6 @@ namespace App\Services;
 
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class AuthService
@@ -14,11 +13,10 @@ class AuthService
     public function handleLogin($credentials)
     {
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('administrator')
-                ->withSuccess('Signed in');
+            return redirect(route('admin'));
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect(route("login"))->with('errorLogin', 'Login details are not valid');
     }
 
     public function handleRegistration($credentials)
@@ -29,7 +27,7 @@ class AuthService
         $user->setPasswordAttribute($credentials->password);
         $user->save();
 
-        return redirect('logout')->withSuccess('Registered');
+        return redirect(route('logout'))->with('errorLogin', 'Registered');
     }
 
     public function logout()
@@ -37,7 +35,7 @@ class AuthService
         session()->flush();
         Auth::logout();
 
-        return redirect('login');
+        return redirect(route('login'));
     }
 
 }

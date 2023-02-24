@@ -37,7 +37,7 @@ class PostController extends BaseController
         $tags = $request->tags;
         $service->create($category_id, $header, $comment, $tags);
 
-        return redirect('list-posts');
+        return redirect(route('list-posts'));
     }
 
     public function updateShow(Post $post, PostService $service)
@@ -55,14 +55,14 @@ class PostController extends BaseController
         $tags = $request->tags;
         $service->update($post, $category_id, $header, $comment, $tags);
 
-        return redirect('list-posts');
+        return redirect(route('list-posts'));
     }
 
     public function delete(Post $post, PostService $service)
     {
         $service->delete($post);
 
-        return redirect('list-posts');
+        return redirect(route('list-posts'));
     }
 
 }

@@ -6,18 +6,12 @@
 
 
 @section('body')
+    <form @if(isset($post->id)) action="/admin/update-post/{{$post->id}}"
+          @else action="/admin/create-post"
+          @endif
+          method="post">
 
-    <form action="" method="post">
         @csrf
-{{--        @if($errors && $errors->any())--}}
-{{--            <div class="alert alert-danger mt-3">--}}
-{{--                <ul>--}}
-{{--                    @foreach($errors->all() as $error)--}}
-{{--                        <li>{{$error}}</li>--}}
-{{--                    @endforeach--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--        @endif--}}
         <div class="mb-3 mt-3">
             <label class="form-label">Category</label>
 

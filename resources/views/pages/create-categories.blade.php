@@ -10,7 +10,7 @@
 
 
 
-    <form action="/create-categories" method="post">
+    <form action="/admin/create-categories" method="post">
         @csrf
         <div class="mb-3 mt-5">
             @if($errors && $errors->any())

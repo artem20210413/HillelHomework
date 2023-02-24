@@ -35,7 +35,7 @@ class TegController extends BaseController
         $name = $request->name;
         $service->create($name);
 
-        return redirect('list-tags');
+        return redirect(route('list-tags'));
     }
 
 
@@ -49,14 +49,14 @@ class TegController extends BaseController
     {
         $service->update($teg, $request);
 
-        return redirect('list-tags');
+        return redirect(route('list-tags'));
     }
 
     public function delete(Teg $teg, TegService $service)
     {
         $service->delete($teg);
 
-        return redirect('list-tags');
+        return redirect(route('list-tags'));
     }
 
 }

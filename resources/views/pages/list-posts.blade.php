@@ -7,7 +7,7 @@
 
 @section('body')
 
-    <a class="m-3 btn btn-primary" href="/create-post">Create new post</a>
+    <a class="m-3 btn btn-primary" href="/admin/create-post">Create new post</a>
 
     @if(isset($successMessage))
         <div class="alert alert-success">
@@ -42,7 +42,7 @@
         <tbody style="cursor: pointer;">
         @foreach($posts as $el)
             <a href="/update-post/{{$el->id}}">
-                <tr onclick="window.location = '/update-post/{{$el->id}}'">
+                <tr onclick="window.location = '/admin/update-post/{{$el->id}}'">
                     <form action="/delete-post/{{$el->id}}" method="POST">
 
                         <th scope="row">{{$el->id}}</th>

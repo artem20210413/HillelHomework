@@ -7,58 +7,60 @@
 
 @section('body')
 
-    <section class="w-100 p-4 d-flex justify-content-center pb-4">
-        <form action="/login" method="post" style="width: 22rem;">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <input type="email" name="email" id="form2Example1" class="form-control">
-                <label class="form-label" for="form2Example1" style="margin-left: 0px;">Email address</label>
-                @error('email')
-                <div class="alert alert-danger mt-3">
-                    <ul>
-                        <li>{{$message}}</li>
-                    </ul>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-7">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                    <h3 class="text-uppercase text-center mb-5">LOGIN TO ACCOUNT</h3>
+
+                    <form action="/login" method="post">
+                        @csrf
+                        @if (session('errorLogin'))
+
+                            <div class="alert alert-danger">
+                                <ul>
+                                    <li>{{session('errorLogin')}}</li>
+                                </ul>
+                            </div>
+                        @endif
+
+                        <div class="form-outline mb-4 text-center">
+                            <label class="form-label " style="margin-left: 0px;">Email address</label>
+                            <input type="tel" name="email" class="form-control form-control-lg">
+                            @error('email')
+                            <div class="alert alert-danger mt-3">
+                                <ul>
+                                    <li>{{$message}}</li>
+                                </ul>
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-outline mb-4 text-center">
+                            <label class="form-label" style="margin-left: 0px;">Password</label>
+                            <input type="password" name="password" class="form-control form-control-lg">
+                            @error('password')
+                            <div class="alert alert-danger mt-3">
+                                <ul>
+                                    <li>{{$message}}</li>
+                                </ul>
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success btn-block">
+                                Sign in
+                            </button>
+                        </div>
+                        <p class="text-center text-muted mt-5 mb-0">Don't have an account yet?
+                            <a href="/registration" class="fw-bold text-body"><u>Registration</u></a></p>
+
+                    </form>
+
                 </div>
-                @enderror
             </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-                <input type="password" name="password" id="form2Example2" class="form-control">
-                <label class="form-label" for="form2Example2" style="margin-left: 0px;">Password</label>
-                @error('password')
-                <div class="alert alert-danger mt-3">
-                    <ul>
-                        <li>{{$message}}</li>
-                    </ul>
-                </div>
-                @enderror
-            </div>
-
-        {{--            <!-- 2 column grid layout for inline styling -->--}}
-        {{--            <div class="row mb-4">--}}
-        {{--                <div class="col d-flex justify-content-center">--}}
-        {{--                    <!-- Checkbox -->--}}
-        {{--                    <div class="form-check">--}}
-        {{--                        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked="">--}}
-        {{--                        <label class="form-check-label" for="form2Example31"> Remember me </label>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-
-        {{--                <div class="col">--}}
-        {{--                    <!-- Simple link -->--}}
-        {{--                    <a href="#!">Forgot password?</a>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-
-        <!-- Submit button -->
-
-            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-
-            <p class="text-center text-muted mt-5 mb-0">Don't have an account yet?
-                <a href="/registration" class="fw-bold text-body"><u>Registration</u></a></p>
-
-        </form>
-    </section>
+        </div>
+    </div>
 
 @endsection

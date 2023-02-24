@@ -33,7 +33,7 @@ class CategoriesController extends BaseController
         $name = $request->name;
         $service->create($name);
 
-        return redirect('list-categories');
+        return redirect(route('list-categories'));
     }
 
     public function updateShow(Categor $category, CategoriesService $service)
@@ -46,14 +46,14 @@ class CategoriesController extends BaseController
         $name = $request->name;
         $service->update($id, $name);
 
-        return redirect('list-categories');
+        return redirect(route('list-categories'));
     }
 
 
-    public function delete(Categor $categor, CategoriesService $service)
+    public function delete(Categor $category, CategoriesService $service)
     {
-        $service->delete($categor);
+        $service->delete($category);
 
-        return redirect('list-categories');
+        return redirect(route('list-categories'));
     }
 }

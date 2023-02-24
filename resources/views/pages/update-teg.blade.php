@@ -7,7 +7,7 @@
 
 @section('body')
 
-    <form action="/update-teg/{{$teg->id}}" method="post">
+    <form action="/admin/update-teg/{{$teg->id}}" method="post">
         @csrf
         <div class="mb-3 mt-5">
             @if($errors && $errors->any())

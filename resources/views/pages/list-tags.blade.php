@@ -7,7 +7,7 @@
 
 @section('body')
 
-    <a href="/create-teg" class="m-3 btn btn-primary">create new teg</a>
+    <a href="/admin/create-teg" class="m-3 btn btn-primary">create new teg</a>
 
     @if(isset($successMessage))
         <div class="alert alert-success">
@@ -38,10 +38,10 @@
         <tbody>
         @foreach($tags as $el)
             <tr>
-                <form action="/delete-teg/{{$el->id}}" method="POST">
+                <form action="/admin/delete-teg/{{$el->id}}" method="POST">
                     <th scope="row">{{$el->id}}</th>
                     <td>{{$el->name}}</td>
-                    <td><a href="update-teg/{{$el->id}}" class="btn btn-primary">update</a></td>
+                    <td><a href="/admin/update-teg/{{$el->id}}" class="btn btn-primary">update</a></td>
                     <td>
                         <button type="submit" class="btn btn-danger">delete</button>
                     </td>

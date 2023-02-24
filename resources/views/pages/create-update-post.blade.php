@@ -6,20 +6,23 @@
 
 
 @section('body')
+    <form @if(isset($post->id)) action="/admin/update-post/{{$post->id}}"
+          @else action="/admin/create-post"
+          @endif
+          method="post">
 
-    <form action="" method="post">
         @csrf
-        @if($errors && $errors->any())
-            <div class="alert alert-danger mt-3">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <div class="mb-3 mt-3">
             <label class="form-label">Category</label>
+
+            @error('category_id')
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    <li>{{$message}}</li>
+                </ul>
+            </div>
+            @enderror
+
             <select class="form-select" name="category_id" aria-label="Default select example">
                 @foreach($category as $el)
                     <option @if($post->category_id == $el->id)selected @endif value="{{$el->id}}">{{$el->name}}</option>
@@ -28,10 +31,28 @@
         </div>
         <div class="mb-3 mt-5">
             <label class="form-label">Header</label>
+
+            @error('header')
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    <li>{{$message}}</li>
+                </ul>
+            </div>
+            @enderror
+
             <input type="text" name="header" class="form-control" id="" value="{{$post->header}}">
         </div>
         <div class="mb-3 mt-5">
             <label class="form-label">Comments</label>
+
+            @error('comment')
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    <li>{{$message}}</li>
+                </ul>
+            </div>
+            @enderror
+
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" name="comment" id="floatingTextarea2"
                           style="height: 100px">{{$post->comment}}</textarea>

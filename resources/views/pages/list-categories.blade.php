@@ -7,7 +7,7 @@
 
 @section('body')
 
-        <a href="/create-categories" class="m-3 btn btn-primary">create new category</a>
+        <a href="/admin/create-categories" class="m-3 btn btn-primary">create new category</a>
 
         @if(isset($successMessage))
             <div class="alert alert-success">
@@ -38,10 +38,10 @@
             <tbody>
             @foreach($category as $el)
                 <tr>
-                    <form action="/delete-categories/{{$el->id}}" method="POST">
+                    <form action="/admin/delete-categories/{{$el->id}}" method="POST">
                         <th scope="row">{{$el->id}}</th>
                         <td>{{$el->name}}</td>
-                        <td><a href="update-categories/{{$el->id}}" class="btn btn-primary">update</a></td>
+                        <td><a href="/admin/update-categories/{{$el->id}}" class="btn btn-primary">update</a></td>
                         <td>
                             <button type="submit" class="btn btn-danger">delete</button>
                         </td>

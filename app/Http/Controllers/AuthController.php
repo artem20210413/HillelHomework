@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Services\AdministratorService;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegistrationRequest;
+use App\Services\AuthService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends BaseController
 {
@@ -26,49 +25,21 @@ class AuthController extends BaseController
         return view('pages.auth.registration', []);
     }
 
-    public function handleRegistration(Request $request)
+    public function handleRegistration(RegistrationRequest $request, AuthService $service)
     {
-        $request->validate([
-            'userName' => 'required',
-            'email' => 'required',
-            'password' => 'required', // 6<
-        ]);
-        $userName = $request->userName;
-        $email = $request->email;
-        $password = $request->password;
-
-        $user = new User();
-        $user->userName = $userName;
-        $user->email = $email;
-        $user->setPasswordAttribute($password);
-        $user->save();
-
-        return redirect('logout')->withSuccess('Registered');
+        $credentials = $request->only('userName', 'email', 'password');
+        return $service->handleRegistration($credentials);
     }
 
-    public function handleLogin(Request $request)
+    public function handleLogin(LoginRequest $request, AuthService $service)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required', // 6<
-        ]);
-
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('administrator')
-                ->withSuccess('Signed in');
-        }
-
-        return redirect("login")->withSuccess('Login details are not valid');
+        return $service->handleLogin($credentials);
     }
 
-    public function logout()
+    public function logout(AuthService $service)
     {
-        session()->flush();
-        Auth::logout();
-
-        return redirect('login');
-
+        return $service->logout();
     }
 
 

@@ -11,4 +11,6 @@ class AdministratorService
         return view('pages.administrator.administrator');
     }
 
+
+
 }

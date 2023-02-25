@@ -27,7 +27,7 @@ class AuthController extends BaseController
 
     public function handleRegistration(RegistrationRequest $request, AuthService $service)
     {
-        $credentials = $request->only('userName', 'email', 'password');
+        $credentials = $request->only('user_name', 'email', 'password');
         return $service->handleRegistration($credentials);
     }
 

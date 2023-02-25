@@ -22,7 +22,7 @@ class AuthService
     public function handleRegistration($credentials)
     {
         $user = new User();
-        $user->userName = $credentials->userName;
+        $user->user_name = $credentials->user_name;
         $user->email = $credentials->email;
         $user->setPasswordAttribute($credentials->password);
         $user->save();

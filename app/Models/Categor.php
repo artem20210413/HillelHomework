@@ -26,4 +26,9 @@ class Categor extends Model
     {
         return $this->hasMany(Post::class, 'category_id', 'id');
     }
+
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Images::class, 'imageable');
+    }
 }

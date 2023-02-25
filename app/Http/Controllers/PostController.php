@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Models\Images;
 use App\Models\Post;
+use App\Models\User;
 use App\Services\PostService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -16,6 +18,23 @@ class PostController extends BaseController
 
     public function show(PostService $service)
     {
+//        $post = Post::find(1);
+//        $images = new Images();
+//        $images->url = 'urlAddressPost';
+//        $post->images()->save($images);
+//
+//        $user = User::find(1);
+//        $images = new Images();
+//        $images->url = 'urlAddressUser';
+//        $user->images()->save($images);
+
+
+//        $post = Post::find(1);
+//        $user = User::find(1);
+//        dd($post->images()->first()->toArray(), $user->images->toArray());
+//
+//dd('success');
+
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
 

@@ -22,9 +22,9 @@ class AuthService
     public function handleRegistration($credentials)
     {
         $user = new User();
-        $user->userName = $credentials->userName;
-        $user->email = $credentials->email;
-        $user->setPasswordAttribute($credentials->password);
+        $user->userName = $credentials['userName'];
+        $user->email = $credentials['email'];
+        $user->setPasswordAttribute($credentials['password']);
         $user->save();
 
         return redirect(route('logout'))->with('errorLogin', 'Registered');

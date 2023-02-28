@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post', function ($table) {
+
+        Schema::create('images', function ($table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->string('header',100);
-            $table->string('comment',600);
-            $table->integer('user_id')->default(1);;
+            $table->string('url');
+            $table->morphs('imageable');
+//            $table->integer('imageable_id ');
+//            $table->enum('imageable_type ', ['category', 'post', 'user']);
             $table->timestamps();
 
 
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('category')
-                ->onDelete('restrict');
         });
     }
 

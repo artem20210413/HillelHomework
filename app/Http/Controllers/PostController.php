@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends BaseController
 {
@@ -16,6 +17,7 @@ class PostController extends BaseController
 
     public function show(PostService $service)
     {
+
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
 
@@ -25,7 +27,6 @@ class PostController extends BaseController
     public function createShow(PostService $service)
     {
         $response = $service->createShow();
-
         return view('pages.create-update-post', $response);
     }
 
@@ -42,8 +43,10 @@ class PostController extends BaseController
 
     public function updateShow(Post $post, PostService $service)
     {
+        $response = Gate::inspect('view', $post);
+        if (!$response->allowed())
+            return redirect(route('list-posts'));
         $response = $service->updateShow($post);
-
         return view('pages.create-update-post', $response);
     }
 
@@ -61,7 +64,6 @@ class PostController extends BaseController
     public function delete(Post $post, PostService $service)
     {
         $service->delete($post);
-
         return redirect(route('list-posts'));
     }
 

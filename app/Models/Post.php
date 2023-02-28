@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property integer category_id
  * @property string header
  * @property string comment
+ * @property integer user_id
  */
 class Post extends Model
 {
@@ -36,5 +37,10 @@ class Post extends Model
     public function teg()
     {
         return $this->belongsToMany(Teg::class)->withTimestamps();
+    }
+
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Images::class, 'imageable');
     }
 }

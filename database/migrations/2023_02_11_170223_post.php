@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('header',100);
             $table->string('comment',600);
+            $table->integer('user_id')->default(1);;
             $table->timestamps();
 
 

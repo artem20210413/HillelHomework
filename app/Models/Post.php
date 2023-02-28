@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property integer category_id
  * @property string header
  * @property string comment
+ * @property integer user_id
  */
 class Post extends Model
 {

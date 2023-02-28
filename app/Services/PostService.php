@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use App\Models\Categor;
@@ -10,7 +12,8 @@ class PostService
 {
     public function show()
     {
-        $posts = Post::with('category')->with('teg')->get();
+        // перед-завантаження зв'язків вже використовуються
+        $posts = Post::with('category','teg')->get();
 
         return ['posts' => $posts];
     }

@@ -19,7 +19,7 @@ class User extends Authenticatable
     use HasFactory;
 
     protected $fillable = [
-        'userName', 'email', 'password',
+        'user_name', 'email', 'password',
     ];
 
     protected $hidden = [
@@ -30,4 +30,10 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Images::class, 'imageable');
+    }
+
 }

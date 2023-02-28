@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function ($table) {
+
+        Schema::create('images', function ($table) {
             $table->id();
-            $table->string('user_name', 100);
-            $table->string('email', 100);
-            $table->string('password',100);
+            $table->string('url');
+            $table->morphs('imageable');
+//            $table->integer('imageable_id ');
+//            $table->enum('imageable_type ', ['category', 'post', 'user']);
             $table->timestamps();
+
+
         });
     }
 

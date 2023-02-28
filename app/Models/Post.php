@@ -38,4 +38,9 @@ class Post extends Model
     {
         return $this->belongsToMany(Teg::class)->withTimestamps();
     }
+
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Images::class, 'imageable');
+    }
 }

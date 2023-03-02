@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\LocationFacade;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Repositories\LocationInterface;
 use App\Services\PostService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Gate;
 
 class PostController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function show(PostService $service)
+    public function show(PostService $service, Request $request)
     {
-
+//        dd(LocationFacade::getCountry($request), LocationFacade::getCity($request), LocationFacade::getPostalCode($request));
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
 

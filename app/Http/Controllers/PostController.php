@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\PostFacade;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Services\PostService;
@@ -9,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Gate;
 
 class PostController extends BaseController
@@ -18,6 +20,8 @@ class PostController extends BaseController
     public function show(PostService $service)
     {
 
+        $p = PostFacade::find(1);
+        dd($p);
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
 

@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Models\Post;
 use App\Repositories\LocationInterface;
 use Illuminate\Http\Request;
 use GeoIp2\Database\Reader;

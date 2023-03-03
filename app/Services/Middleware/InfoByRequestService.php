@@ -11,7 +11,7 @@ class InfoByRequestService
 {
 
 
-    public function __construct()
+    public function __construct(public RedirectService $redirectService, public SaveInfoUserService $saveInfoUserService)
     {
     }
 
@@ -19,10 +19,8 @@ class InfoByRequestService
     {
         $ip = LocationFacade::getIp($request);
         $country = LocationFacade::getCountry($request);
-        $redirectService = new RedirectService();
-        $redirect = $redirectService->redirect($request, $country);
-        $saveInfoUser = new SaveInfoUserService();
-        $saveInfoUser->save($ip, $country, $redirect);
+        $redirect = $this->redirectService->redirect($request, $country);
+        $this->saveInfoUserService->save($ip, $country, $redirect);
 
         return redirect($redirect);
     }

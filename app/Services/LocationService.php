@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Post;
 use App\Repositories\LocationInterface;
+use GeoIp2\Exception\AddressNotFoundException;
 use Illuminate\Http\Request;
 use GeoIp2\Database\Reader;
 
@@ -23,16 +24,22 @@ class LocationService implements LocationInterface
 
     static function getIp(Request $request)
     {
-        return $request->getClientIp() === '127.0.0.1' ? '77.121.234.210' : $request->getClientIp();
+        return $request->getClientIp() === '127.0.0.1' ?
+            rand(1, 255) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(1, 255) :
+            $request->getClientIp();
     }
 
     function getCountry(Request $request)
     {
-        $ip = self::getIp($request);
-        $record = $this->reader->city($ip);
-//        $countryCode = $record->country->isoCode;
-        $countryName = $record->country->name;
-        return $countryName;
+        try {
+            $ip = self::getIp($request);
+            $record = $this->reader->city($ip);
+            $countryName = $record->country->name;
+            return $countryName;
+        }catch (AddressNotFoundException $e){
+            return $this->getCountry($request);
+        }
+
     }
 
     function getCity(Request $request)

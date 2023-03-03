@@ -6,7 +6,6 @@ namespace App\Services\Middleware;
 
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
-use function Ramsey\Collection\element;
 
 class RedirectService
 {
@@ -17,7 +16,7 @@ class RedirectService
 
     public function redirect(Request $request, string $country)
     {
-        $userAgent = $request->header('User-Agent');
+//        $userAgent = $request->header('User-Agent');
 
         //https://github.com/jenssegers/agent
         //composer require jenssegers/agent

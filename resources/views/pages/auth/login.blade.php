@@ -53,6 +53,7 @@
                                 Sign in
                             </button>
                         </div>
+                        <a href="{{$client->createAuthUrl()}}">Google Auth</a>
                         <p class="text-center text-muted mt-5 mb-0">Don't have an account yet?
                             <a href="/registration" class="fw-bold text-body"><u>Registration</u></a></p>
 

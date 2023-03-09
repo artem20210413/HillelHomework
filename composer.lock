@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6cdc7c192fbfb556b5e1e7dc1fcb74b0",
+    "content-hash": "ac8520f355352835f7ccce71e2c74051",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -6282,6 +6282,39 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
             },
             "time": "2023-01-03T09:29:04+00:00"
+        },
+        {
+            "name": "verpeta/hillel-geo",
+            "version": "11.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verpeta/hillel-geo.git",
+                "reference": "6405313833de2d01d95f73006e5b349417713c0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verpeta/hillel-geo/zipball/6405313833de2d01d95f73006e5b349417713c0a",
+                "reference": "6405313833de2d01d95f73006e5b349417713c0a",
+                "shasum": ""
+            },
+            "require": {
+                "geoip2/geoip2": "^2.13",
+                "illuminate/support": "^9.14",
+                "php": "^8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "verpeta\\HillelGeo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Geo service",
+            "support": {
+                "issues": "https://github.com/verpeta/hillel-geo/issues",
+                "source": "https://github.com/verpeta/hillel-geo/tree/11.2.0"
+            },
+            "time": "2023-03-09T19:14:34+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

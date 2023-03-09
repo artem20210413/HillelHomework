@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Services\AuthService;
+use App\Services\GoogleOauthService;
 use Google\Client;
+use Google\Service\Oauth2;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -18,7 +20,12 @@ class GoogleAuthController extends BaseController
 
     public function auth(Request $request)
     {
-        dd($request);
+        if ((new GoogleOauthService())->getUserInfo($request)) {
+
+            return redirect(route('admin'));
+        }
+
+        return redirect(route('login'))->with('errorLogin', 'Login details are not valid');;
     }
 
 }

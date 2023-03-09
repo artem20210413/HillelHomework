@@ -25,9 +25,9 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
     'google' => [
-        'client_id' => env('546492761530-96b9cc8io884vp269ubvlqtleufri678.apps.googleusercontent.com'),
-        'client_secret' => env('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'),
-        'redirect' => env('http://localhost/google-auth')
+        'client_id' => '546492761530-96b9cc8io884vp269ubvlqtleufri678.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://localhost/google-auth'
     ],
 
     'ses' => [

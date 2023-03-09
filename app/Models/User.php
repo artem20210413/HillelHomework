@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @package App\Models
  * @property integer id
  * @property string email
+ * @property string user_name
  * @property string password
  *
  */

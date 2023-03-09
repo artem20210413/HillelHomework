@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TegController;
 use App\Services\LoginService;
@@ -25,6 +26,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/google-auth', [GoogleAuthController::class, 'auth']);
     Route::get('/registration', [AuthController::class, 'registration']);
     Route::post('/login', [AuthController::class, 'handleLogin']);
     Route::post('/registration', [AuthController::class, 'handleRegistration']);

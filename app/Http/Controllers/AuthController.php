@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Services\AuthService;
+use App\Services\GoogleOauthService;
+use Google\Client;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -17,12 +19,12 @@ class AuthController extends BaseController
 
     public function login()
     {
-        return view('pages.auth.login', []);
+        return view('pages.auth.login', ['client' => (new GoogleOauthService())->getClientAuth()]);
     }
 
     public function registration()
     {
-        return view('pages.auth.registration', []);
+        return view('pages.auth.registration', ['client' => (new GoogleOauthService())->getClientAuth()]);
     }
 
     public function handleRegistration(RegistrationRequest $request, AuthService $service)

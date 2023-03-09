@@ -15,6 +15,7 @@ class GoogleOauthService
 
     public function __construct()
     {
+        //https://console.cloud.google.com/
         $client = new Client();
         $client->setClientId(config('services.google')['client_id']);
         $client->setClientSecret(config('services.google')['client_secret']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Ahillel\Math\Degree;
 use App\Facades\LocationFacade;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
@@ -21,7 +22,8 @@ class PostController extends BaseController
 
     public function show(PostService $service, Request $request)
     {
-//        dd(LocationFacade::getCountry($request), LocationFacade::getCity($request), LocationFacade::getPostalCode($request));
+
+        dd((new Degree())->pow(2,5));
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
 

@@ -9,6 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "ahillel/math": "^1.0",
+        "artem-hillel/hillel-math": "^1.0",
         "barryvdh/laravel-debugbar": "^3.8",
         "geoip2/geoip2": "~2.0",
         "google/apiclient": "2.12.1",

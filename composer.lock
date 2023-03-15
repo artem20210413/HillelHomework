@@ -4,8 +4,79 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac8520f355352835f7ccce71e2c74051",
+    "content-hash": "9e715ee7f310f233de8a8616ab577138",
     "packages": [
+        {
+            "name": "ahillel/math",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artem20210413/HillelComposer.git",
+                "reference": "25a8b8cea8d42ce7da410b5bfc2e6558a10a1e1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artem20210413/HillelComposer/zipball/25a8b8cea8d42ce7da410b5bfc2e6558a10a1e1c",
+                "reference": "25a8b8cea8d42ce7da410b5bfc2e6558a10a1e1c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ahillel\\Math\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "HillelArtemTishchenko"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/artem20210413/HillelComposer/issues",
+                "source": "https://github.com/artem20210413/HillelComposer/tree/1.0.0"
+            },
+            "time": "2023-03-15T19:56:35+00:00"
+        },
+        {
+            "name": "artem-hillel/hillel-math",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artem20210413/Math.git",
+                "reference": "3b8645e25a0b29cf8dfec62a181dbd6651aa3130"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artem20210413/Math/zipball/3b8645e25a0b29cf8dfec62a181dbd6651aa3130",
+                "reference": "3b8645e25a0b29cf8dfec62a181dbd6651aa3130",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^9|^10",
+                "php": "8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Artem\\HillelMath\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "artem"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/artem20210413/Math/issues",
+                "source": "https://github.com/artem20210413/Math/tree/1.0.0"
+            },
+            "time": "2023-03-12T21:09:37+00:00"
+        },
         {
             "name": "barryvdh/laravel-debugbar",
             "version": "v3.8.1",

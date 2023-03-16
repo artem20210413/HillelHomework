@@ -23,7 +23,7 @@ class PostController extends BaseController
     public function show(PostService $service, Request $request)
     {
 
-        dd((new Degree())->pow(2,5));
+//        dd((new Degree())->pow(2,5));
         $response = $service->show();
         $response['successMessage'] = session('successMessage');
 

@@ -12,9 +12,6 @@ use GeoIp2\Database\Reader;
 
 class LocationService implements LocationInterface
 {
-//    public function __construct(public LocationInterface $location)
-//    {
-//    }
     private $reader;
 
     public function __construct()

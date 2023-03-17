@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Jobs\VisitJob;
+use App\Services\Middleware\InfoByRequestService;
+use Illuminate\Console\Application;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,8 +17,8 @@ class VisitServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind([ProcessPodcast::class, 'handle'], function ($job, $app) {
-            return $job->handle($app->make(AudioProcessor::class));
+        $this->app->bind(VisitJob::class, 'handle', function (VisitJob $job, Application $app) {
+            $job->handle($app->make(InfoByRequestService::class));
         });
     }
 

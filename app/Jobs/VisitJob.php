@@ -30,10 +30,9 @@ class VisitJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(InfoByRequestService $infoByRequestService)
     {
-        $infoByRequestService = new InfoByRequestService();
+//        $infoByRequestService = new InfoByRequestService();
         $infoByRequestService->info($this->request);
-
     }
 }

@@ -5,18 +5,12 @@ namespace App\Services\Middleware;
 
 
 use App\Facades\LocationFacade;
-use Illuminate\Http\Request;
 
 class InfoByRequestService
 {
 
-    public RedirectService $redirectService;
-    public SaveInfoUserService $saveInfoUserService;
-
-    public function __construct()
+    public function __construct(public RedirectService $redirectService, public SaveInfoUserService $saveInfoUserService)
     {
-        $this->redirectService = new RedirectService();
-        $this->saveInfoUserService = new SaveInfoUserService();
     }
 
     public function info($request)

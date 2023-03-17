@@ -12,9 +12,6 @@ use GeoIp2\Database\Reader;
 
 class LocationService implements LocationInterface
 {
-//    public function __construct(public LocationInterface $location)
-//    {
-//    }
     private $reader;
 
     public function __construct()
@@ -29,15 +26,19 @@ class LocationService implements LocationInterface
             $request->getClientIp();
     }
 
-    function getCountry(Request $request)
+    static function getRandomIp()
+    {
+        return rand(1, 255) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(1, 255);
+    }
+
+    function getCountry($ip)
     {
         try {
-            $ip = self::getIp($request);
             $record = $this->reader->city($ip);
             $countryName = $record->country->name;
             return $countryName;
-        }catch (AddressNotFoundException $e){
-            return $this->getCountry($request);
+        } catch (AddressNotFoundException $e) {
+            return $this->getCountry($ip);
         }
 
     }

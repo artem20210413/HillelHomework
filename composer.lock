@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e715ee7f310f233de8a8616ab577138",
+    "content-hash": "c9f069a0c0e37d98471407d758b6a49b",
     "packages": [
         {
             "name": "ahillel/math",
@@ -40,42 +40,6 @@
                 "source": "https://github.com/artem20210413/HillelComposer/tree/1.0.0"
             },
             "time": "2023-03-15T19:56:35+00:00"
-        },
-        {
-            "name": "artem-hillel/hillel-math",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/artem20210413/Math.git",
-                "reference": "3b8645e25a0b29cf8dfec62a181dbd6651aa3130"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/artem20210413/Math/zipball/3b8645e25a0b29cf8dfec62a181dbd6651aa3130",
-                "reference": "3b8645e25a0b29cf8dfec62a181dbd6651aa3130",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^9|^10",
-                "php": "8.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Artem\\HillelMath\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "artem"
-                }
-            ],
-            "support": {
-                "issues": "https://github.com/artem20210413/Math/issues",
-                "source": "https://github.com/artem20210413/Math/tree/1.0.0"
-            },
-            "time": "2023-03-12T21:09:37+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -919,16 +883,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.289.0",
+            "version": "v0.290.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "937f83a927db2d09db7eebb69ce2ac4114559bd7"
+                "reference": "6f79073f022686461af2d1a95b4fe91caaf947ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/937f83a927db2d09db7eebb69ce2ac4114559bd7",
-                "reference": "937f83a927db2d09db7eebb69ce2ac4114559bd7",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/6f79073f022686461af2d1a95b4fe91caaf947ec",
+                "reference": "6f79073f022686461af2d1a95b4fe91caaf947ec",
                 "shasum": ""
             },
             "require": {
@@ -957,9 +921,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.289.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.290.1"
             },
-            "time": "2023-02-26T01:10:11+00:00"
+            "time": "2023-03-13T21:05:11+00:00"
         },
         {
             "name": "google/auth",

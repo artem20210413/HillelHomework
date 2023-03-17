@@ -5,24 +5,22 @@ namespace App\Services\Middleware;
 
 
 use App\Facades\LocationFacade;
-use Illuminate\Http\Request;
 
 class InfoByRequestService
 {
-
 
     public function __construct(public RedirectService $redirectService, public SaveInfoUserService $saveInfoUserService)
     {
     }
 
-    public function info(Request $request)
+    public function info($request)
     {
-        $ip = LocationFacade::getIp($request);
-        $country = LocationFacade::getCountry($request);
-        $redirect = $this->redirectService->redirect($request, $country);
+        $ip = LocationFacade::getRandomIp($request);
+        $country = LocationFacade::getCountry($ip);
+        $redirect = $this->redirectService->redirect($country);
         $this->saveInfoUserService->save($ip, $country, $redirect);
 
-        return redirect($redirect);
+//        return redirect($redirect);
     }
 
 }

@@ -14,14 +14,8 @@ class RedirectService
     {
     }
 
-    public function redirect(Request $request, string $country)
+    public function redirect(string $country)
     {
-//        $userAgent = $request->header('User-Agent');
-//        https://github.com/jenssegers/agent
-//        composer require jenssegers / agent
-//        $agent = new Agent();
-//        $browser = $agent->browser();
-//        $version = $agent->version($browser);
         $platform = (new Agent())->platform();
 
         if ($platform === 'Apple' && $country === 'USA') {

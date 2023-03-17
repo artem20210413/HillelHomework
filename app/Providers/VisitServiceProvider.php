@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Jobs\VisitJob;
+use App\Services\Middleware\InfoByRequestService;
+use Illuminate\Console\Application;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class VisitServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -14,7 +17,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(VisitJob::class, 'handle', function (VisitJob $job, Application $app) {
+            $job->handle($app->make(InfoByRequestService::class));
+        });
     }
 
     /**

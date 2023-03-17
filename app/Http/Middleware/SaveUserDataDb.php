@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Facades\LocationFacade;
+use App\Jobs\VisitJob;
 use App\Services\Middleware\InfoByRequestService;
 use Closure;
 use Illuminate\Http\Request;
@@ -23,6 +24,8 @@ class SaveUserDataDb
 
     public function handle(Request $request, Closure $next)
     {
-        return $this->infoByRequestService->info($request);
+//        $this->infoByRequestService->info($request);
+        VisitJob::dispatch($request->all());
+        return $next($request);
     }
 }

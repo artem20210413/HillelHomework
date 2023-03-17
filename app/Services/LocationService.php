@@ -28,16 +28,19 @@ class LocationService implements LocationInterface
             rand(1, 255) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(1, 255) :
             $request->getClientIp();
     }
+    static function getRandomIp()
+    {
+        return rand(1, 255) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(1, 255);
+    }
 
-    function getCountry(Request $request)
+    function getCountry($ip)
     {
         try {
-            $ip = self::getIp($request);
             $record = $this->reader->city($ip);
             $countryName = $record->country->name;
             return $countryName;
         }catch (AddressNotFoundException $e){
-            return $this->getCountry($request);
+            return $this->getCountry($ip);
         }
 
     }

@@ -2,14 +2,16 @@
 
 namespace App\Jobs;
 
+use App\Services\Middleware\InfoByRequestService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SomeJob implements ShouldQueue
+class VisitJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -18,7 +20,7 @@ class SomeJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(public $request)
     {
         //
     }
@@ -30,6 +32,8 @@ class SomeJob implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $infoByRequestService = new InfoByRequestService();
+        $infoByRequestService->info($this->request);
+
     }
 }

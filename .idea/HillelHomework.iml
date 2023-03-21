@@ -130,6 +130,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient-services" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/auth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/verpeta/hillel-geo" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/artem-hillel/hillel-math" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ahillel/math" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
